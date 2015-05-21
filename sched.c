@@ -21,10 +21,11 @@ pthread_t job_thread[4];
 pthread_t cpu_thread[8];
 pthread_t io_thread[4];
 
+FILE *fileHandle;
+
 int curId = 0;
 int job_runing = 1;
-int jobs_finished = 0;
-int op_finished = 0;
+int ops_finished = 0;
 
 TAILQ_HEAD(q1, Job) cpu_head;
 TAILQ_HEAD(q2, Job) io_head;
@@ -55,35 +56,35 @@ Job *createRandomJob();
 
 int getOpCount() {
 	pthread_mutex_lock(&op_lock);
-	int c = op_finished;
+	int c = ops_finished;
 	pthread_mutex_unlock(&op_lock);
 	return c;
 }
 
-int getJobFinished() {
+/*int getJobFinished() {
 	pthread_mutex_lock(&jf_lock);
 	int c = jobs_finished;
 	pthread_mutex_unlock(&jf_lock);
 	return c;
-}
+}*/
 
 void incrementOP(){
 	pthread_mutex_lock(&op_lock);
-	op_finished++;
+	ops_finished++;
 	pthread_mutex_unlock(&op_lock);
 }
 
-void incrementJobFin(){
+/*void incrementJobFin(){
 	pthread_mutex_lock(&jf_lock);
 	jobs_finished++;
 	pthread_mutex_unlock(&jf_lock);
-}
+}*/
 
 void cpu_enque(Job *j)
 {
 	pthread_mutex_lock(&cpu_lock);
 	TAILQ_INSERT_TAIL(&cpu_head, j, jobs);
-	printf("\n Job %d added to cpu queue\n", j->job_id);	
+	fprintf(fileHandle, "\n Job %d added to cpu queue\n", j->job_id);	
 	pthread_mutex_unlock(&cpu_lock);
 }
 
@@ -93,7 +94,7 @@ Job *cpu_deque()
 	Job *j = cpu_head.tqh_first;
 	if (j) {
 		TAILQ_REMOVE(&cpu_head, cpu_head.tqh_first, jobs);
-		printf("\n Job %d removed from cpu queue\n", j->job_id);
+		fprintf(fileHandle, "\n Job %d removed from cpu queue\n", j->job_id);
 	} 
 	pthread_mutex_unlock(&cpu_lock);
 	return j;
@@ -104,7 +105,7 @@ void io_enque(Job *j)
 	pthread_mutex_lock(&io_lock);
 	TAILQ_INSERT_TAIL(&io_head, j, jobs);
 	pthread_mutex_unlock(&io_lock);
-	printf("\n Job %d added to io queue\n", j->job_id);	
+	fprintf(fileHandle, "\n Job %d added to io queue\n", j->job_id);	
 }
 
 Job *io_deque()
@@ -113,7 +114,7 @@ Job *io_deque()
 	Job *j = io_head.tqh_first;
 	if(j) {
 		TAILQ_REMOVE(&io_head, io_head.tqh_first, jobs);
-		printf("\n Job %d removed from io queue\n", j->job_id);	
+		fprintf(fileHandle, "\n Job %d removed from io queue\n", j->job_id);	
 	} 
 	pthread_mutex_unlock(&io_lock);
 	return j;
@@ -124,19 +125,38 @@ void fin_enque(Job *j)
 	pthread_mutex_lock(&fin_lock);
 	TAILQ_INSERT_TAIL(&fin_head, j, jobs);
 	pthread_mutex_unlock(&fin_lock);
-	//printf("\n Job %d added to finished queue\n", j->job_id);	
 }
 
 Job *fin_deque()
-{
+{	
 	pthread_mutex_lock(&fin_lock);
 	Job *j = fin_head.tqh_first;
 	if(j) {
 		TAILQ_REMOVE(&fin_head, fin_head.tqh_first, jobs);
-		//printf("\n Job %d removed from io queue\n", j->job_id);
 	} 
 	pthread_mutex_unlock(&fin_lock);
 	return j;
+}
+
+void searchAndRemove(int *a, int *count, Job *j)
+{
+	int i, k;
+	for(i=0; i<count[0]; i++) {
+		if(a[i] == j->job_id) {
+			//remove id from a, and move everything over
+			count[0]--;
+			for(k = i; k < count[0] - 1; j++) {
+				a[k] = a[k+1];
+			}
+			//free job
+			fprintf(stdout, "Freeing Job %d", j->job_id);
+			fprintf(fileHandle, "Freeing Job %d", j->job_id);
+			//incrementJobFin();
+			free(j);
+			break;
+		}
+		fin_enque(j);
+	}
 }
 
 void *cpu(void *arg)
@@ -145,8 +165,8 @@ void *cpu(void *arg)
 	while(getOpCount() < JOB_TC * JOB_LIMIT) {	
 		Job *j = cpu_deque();
 		if (j) {
-			printf("\nCPU %d Running job %d for %d secs\n", n, j->job_id, j->duration[j->current_phase]);
-			//sleep(j->duration[j->current_phase]);
+			fprintf(fileHandle, "\nCPU %d Running job %d for %d secs\n", n, j->job_id, j->duration[j->current_phase]);
+			sleep(j->duration[j->current_phase]);
 			j->current_phase++;	
 			if(j->phaseC > j->current_phase) {
 				if(j->type[j->current_phase]) { //if 1 then io
@@ -157,11 +177,11 @@ void *cpu(void *arg)
 			} else { //add to finished queue 
 				fin_enque(j);
 				incrementOP();
-				printf("\n Job %d added to finished queue\n", j->job_id);				
+				fprintf(fileHandle, "\n Job %d added to finished queue\n", j->job_id);		
 			}	
 		}
 	}
-	printf("\nCPU %d stoping\n", n);
+	fprintf(fileHandle, "\nCPU %d stoping\n", n);
 	return NULL;
 }
 
@@ -172,8 +192,8 @@ void *io(void *arg)
 		Job *j = io_deque();
 		
 		if(j) {
-			printf("\nIO %d Running job %d for %d secs\n", n, j->job_id, j->duration[j->current_phase]);
-			//sleep(j->duration[j->current_phase]);		
+			fprintf(fileHandle, "\nIO %d Running job %d for %d secs\n", n, j->job_id, j->duration[j->current_phase]);
+			sleep(j->duration[j->current_phase]);
 			j->current_phase++;		
 			if(j->phaseC > j->current_phase) {
 				if(j->type[j->current_phase]) { //if 1 then io
@@ -184,46 +204,35 @@ void *io(void *arg)
 			} else { //add to finished queue 
 					fin_enque(j);
 					incrementOP();
-					printf("\n Job %d added to finished queue\n", j->job_id);				
+					fprintf(fileHandle, "\n Job %d added to finished queue\n", j->job_id);
+					printf("Jobs Finished: %d", getOpCount());		
 			}
 		}
 	}
-	printf("\nIO %d stoping\n", n);
+	fprintf(fileHandle, "\nIO %d stoping\n", n);
 	return NULL;
 }
 
 void *job_creator(void *arg)
 {
 	int n = ((Arg *)arg)->n;
-	printf("JOb creator %d", n);
 	int *created_jobs = (int *)malloc(sizeof(int) * JOB_LIMIT);
-	int jobC = 0;
-	int i;
-	while (getJobFinished() < JOB_TC * JOB_LIMIT) {
-		//free job if it's finished and from this 
+	int *jobC = (int *)malloc(sizeof(int));
+	jobC[0] = 0;	
+	while (getOpCount() < JOB_TC * JOB_LIMIT) {
+		//free job if it's finished and from this		
 		Job *jf = fin_deque();	
 		if (jf){
-			for(i = 0; i < jobC; i++) {
-				if(created_jobs[i] == jf->job_id) {
-					printf("\n Job %d removed from finished queue\n", jf->job_id);	
-					printf("\nJob Creator %d freeing Job %d\n", n, jf->job_id);
-					free(jf);
-					incrementJobFin();
-				} else {
-					fin_enque(jf);	
-				}
-			}
-			jf = fin_deque();
-		}
-		
-		if(job_runing) {			
+			searchAndRemove(created_jobs, jobC, jf);
+		}		
+		if(job_runing) {						
 			Job *j = createRandomJob();
-			created_jobs[jobC] = j->job_id;
-			printf("\nJob Creator %d creating job %d \n", n, j->job_id);
+			created_jobs[jobC[0]] = j->job_id;
+			fprintf(fileHandle, "\nJob Creator %d creating job %d \n", n, j->job_id);
 			cpu_enque(j);
 			jobC++;
-			if(jobC >= JOB_LIMIT) {
-				printf("\nJob Creator %d stoping job creation\n", n);
+			if(jobC[0] >= JOB_LIMIT) {
+				fprintf(fileHandle, "\nJob Creator %d stoping job creation\n", n);
 				job_runing = 0;
 			}
 			sleep(2);
@@ -248,7 +257,7 @@ Job *createRandomJob()
 	j->type = malloc(sizeof(int) * phaseC);
 
 	for(i=0; i<phaseC; i++) {
-		j->duration[i] = (rand() % 15) + 2;
+		j->duration[i] = (rand() % 10) + 1;
 		j->type[i] = i % 2;
 	}	
 	return j;
@@ -267,6 +276,8 @@ int nextId()
 int main (int argc, char *argv[])
 {
 	srand(time(NULL));
+	fileHandle = fopen("sched.txt", "w");
+	//fileHandle = stdout;
 	TAILQ_INIT(&cpu_head);
 	TAILQ_INIT(&io_head);
 	TAILQ_INIT(&fin_head);

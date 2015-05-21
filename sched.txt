@@ -1,0 +1,656 @@
+
+Job Creator 0 creating job 0 
+
+ Job 0 added to cpu queue
+
+Job Creator 3 creating job 2 
+
+ Job 2 added to cpu queue
+
+Job Creator 1 creating job 3 
+
+ Job 0 removed from cpu queue
+
+Job Creator 2 creating job 1 
+
+ Job 1 added to cpu queue
+
+ Job 3 added to cpu queue
+
+CPU 0 Running job 0 for 9 secs
+
+ Job 2 removed from cpu queue
+
+CPU 1 Running job 2 for 9 secs
+
+ Job 1 removed from cpu queue
+
+CPU 2 Running job 1 for 7 secs
+
+ Job 3 removed from cpu queue
+
+CPU 3 Running job 3 for 2 secs
+
+Job Creator 2 creating job 5 
+
+ Job 5 added to cpu queue
+
+Job Creator 0 creating job 4 
+
+ Job 4 added to cpu queue
+
+Job Creator 3 creating job 6 
+
+ Job 6 added to cpu queue
+
+ Job 5 removed from cpu queue
+
+CPU 6 Running job 5 for 10 secs
+
+ Job 4 removed from cpu queue
+
+CPU 4 Running job 4 for 10 secs
+
+Job Creator 1 creating job 7 
+
+ Job 7 added to cpu queue
+
+ Job 3 added to io queue
+
+ Job 6 removed from cpu queue
+
+CPU 7 Running job 6 for 3 secs
+
+ Job 7 removed from cpu queue
+
+ Job 3 removed from io queue
+
+CPU 3 Running job 7 for 10 secs
+
+IO 1 Running job 3 for 7 secs
+
+Job Creator 0 creating job 8 
+
+ Job 8 added to cpu queue
+
+Job Creator 2 creating job 9 
+
+ Job 9 added to cpu queue
+
+Job Creator 3 creating job 10 
+
+ Job 10 added to cpu queue
+
+ Job 8 removed from cpu queue
+
+CPU 5 Running job 8 for 8 secs
+
+Job Creator 1 creating job 11 
+
+ Job 11 added to cpu queue
+
+ Job 6 added to io queue
+
+ Job 9 removed from cpu queue
+
+CPU 7 Running job 9 for 4 secs
+
+ Job 6 removed from io queue
+
+IO 3 Running job 6 for 5 secs
+
+Job Creator 2 creating job 12 
+
+ Job 12 added to cpu queue
+
+Job Creator 3 creating job 13 
+
+ Job 13 added to cpu queue
+
+Job Creator 1 creating job 14 
+
+ Job 14 added to cpu queue
+
+Job Creator 0 creating job 15 
+
+ Job 15 added to cpu queue
+
+ Job 1 removed from io queue
+
+ Job 1 added to io queue
+
+ Job 10 removed from cpu queue
+
+CPU 2 Running job 10 for 7 secs
+
+IO 0 Running job 1 for 2 secs
+
+Job Creator 3 creating job 17 
+
+Job Creator 2 creating job 16 
+
+ Job 17 added to cpu queue
+
+Job Creator 1 creating job 18 
+
+ Job 18 added to cpu queue
+
+ Job 16 added to cpu queue
+
+Job Creator 0 creating job 19 
+
+ Job 19 added to cpu queue
+
+ Job 3 added to cpu queue
+
+ Job 0 removed from io queue
+
+ Job 0 added to io queue
+
+ Job 11 removed from cpu queue
+
+CPU 0 Running job 11 for 7 secs
+
+IO 2 Running job 0 for 2 secs
+
+ Job 2 added to io queue
+
+ Job 9 added to io queue
+
+ Job 12 removed from cpu queue
+
+CPU 1 Running job 12 for 4 secs
+
+ Job 13 removed from cpu queue
+
+CPU 7 Running job 13 for 3 secs
+
+ Job 2 removed from io queue
+
+IO 1 Running job 2 for 2 secs
+
+ Job 1 added to cpu queue
+
+ Job 9 removed from io queue
+
+IO 0 Running job 9 for 4 secs
+
+ Job 6 added to cpu queue
+
+Job Creator 1 creating job 20 
+
+ Job 20 added to cpu queue
+
+Job Creator 1 stoping job creation
+
+ Job 0 added to cpu queue
+
+ Job 2 added to cpu queue
+
+ Job 5 added to io queue
+
+ Job 14 removed from cpu queue
+
+CPU 6 Running job 14 for 6 secs
+
+ Job 5 removed from io queue
+
+IO 2 Running job 5 for 7 secs
+
+ Job 4 added to io queue
+
+ Job 15 removed from cpu queue
+
+CPU 4 Running job 15 for 10 secs
+
+ Job 4 removed from io queue
+
+IO 1 Running job 4 for 3 secs
+
+ Job 8 added to io queue
+
+ Job 17 removed from cpu queue
+
+CPU 5 Running job 17 for 6 secs
+
+ Job 8 removed from io queue
+
+IO 3 Running job 8 for 1 secs
+
+ Job 7 added to io queue
+
+ Job 18 removed from cpu queue
+
+CPU 3 Running job 18 for 3 secs
+
+ Job 13 added to io queue
+
+ Job 16 removed from cpu queue
+
+CPU 7 Running job 16 for 6 secs
+
+ Job 8 added to cpu queue
+
+ Job 7 removed from io queue
+
+IO 3 Running job 7 for 10 secs
+
+ Job 12 added to io queue
+
+ Job 19 removed from cpu queue
+
+CPU 1 Running job 19 for 2 secs
+
+ Job 9 added to cpu queue
+
+ Job 13 removed from io queue
+
+IO 0 Running job 13 for 5 secs
+
+ Job 10 added to io queue
+
+ Job 3 removed from cpu queue
+
+CPU 2 Running job 3 for 8 secs
+
+ Job 4 added to cpu queue
+
+ Job 12 removed from io queue
+
+IO 1 Running job 12 for 6 secs
+
+ Job 18 added to io queue
+
+ Job 1 removed from cpu queue
+
+CPU 3 Running job 1 for 6 secs
+
+ Job 19 added to io queue
+
+ Job 6 removed from cpu queue
+
+CPU 1 Running job 6 for 5 secs
+
+ Job 11 added to io queue
+
+ Job 20 removed from cpu queue
+
+CPU 0 Running job 20 for 2 secs
+
+ Job 14 added to io queue
+
+ Job 0 removed from cpu queue
+
+CPU 6 Running job 0 for 4 secs
+
+ Job 17 added to io queue
+
+ Job 2 removed from cpu queue
+
+CPU 5 Running job 2 for 2 secs
+
+ Job 13 added to cpu queue
+
+ Job 10 removed from io queue
+
+ Job 20 added to io queue
+
+IO 0 Running job 10 for 10 secs
+
+ Job 8 removed from cpu queue
+
+CPU 0 Running job 8 for 1 secs
+
+ Job 16 added to io queue
+
+ Job 9 removed from cpu queue
+
+CPU 7 Running job 9 for 9 secs
+
+ Job 5 added to cpu queue
+
+ Job 18 removed from io queue
+
+IO 2 Running job 18 for 7 secs
+
+ Job 8 added to finished queue
+
+ Job 4 removed from cpu queue
+
+CPU 0 Running job 4 for 1 secs
+
+ Job 2 added to io queue
+
+ Job 13 removed from cpu queue
+
+CPU 5 Running job 13 for 3 secs
+
+ Job 6 added to io queue
+
+ Job 5 removed from cpu queue
+
+CPU 1 Running job 5 for 9 secs
+
+ Job 4 added to io queue
+
+ Job 12 added to cpu queue
+
+ Job 19 removed from io queue
+
+IO 1 Running job 19 for 10 secs
+
+ Job 12 removed from cpu queue
+
+CPU 0 Running job 12 for 6 secs
+
+ Job 1 added to finished queue
+
+ Job 15 added to io queue
+
+ Job 0 added to finished queue
+
+ Job 3 added to io queue
+
+ Job 7 added to cpu queue
+
+ Job 11 removed from io queue
+
+IO 3 Running job 11 for 5 secs
+
+ Job 7 removed from cpu queue
+
+CPU 2 Running job 7 for 3 secs
+
+ Job 13 added to io queue
+
+ Job 18 added to cpu queue
+
+ Job 14 removed from io queue
+
+IO 2 Running job 14 for 6 secs
+
+ Job 18 removed from cpu queue
+
+CPU 3 Running job 18 for 6 secs
+
+ Job 7 added to finished queue
+
+ Job 12 added to finished queue
+
+ Job 9 added to finished queue
+
+ Job 11 added to cpu queue
+
+ Job 17 removed from io queue
+
+IO 3 Running job 17 for 4 secs
+
+ Job 11 removed from cpu queue
+
+CPU 5 Running job 11 for 5 secs
+
+ Job 10 added to cpu queue
+
+ Job 20 removed from io queue
+
+IO 0 Running job 20 for 10 secs
+
+ Job 10 removed from cpu queue
+
+CPU 2 Running job 10 for 3 secs
+
+ Job 5 added to io queue
+
+ Job 19 added to cpu queue
+
+ Job 16 removed from io queue
+
+IO 1 Running job 16 for 10 secs
+
+ Job 19 removed from cpu queue
+
+CPU 7 Running job 19 for 2 secs
+
+ Job 10 added to io queue
+
+ Job 18 added to finished queue
+
+ Job 14 added to cpu queue
+
+ Job 2 removed from io queue
+
+IO 2 Running job 2 for 4 secs
+
+ Job 14 removed from cpu queue
+
+CPU 2 Running job 14 for 8 secs
+
+ Job 17 added to cpu queue
+
+ Job 6 removed from io queue
+
+IO 3 Running job 6 for 3 secs
+
+ Job 17 removed from cpu queue
+
+CPU 3 Running job 17 for 2 secs
+
+ Job 19 added to io queue
+
+ Job 11 added to io queue
+
+ Job 17 added to io queue
+
+ Job 6 added to cpu queue
+
+ Job 4 removed from io queue
+
+IO 3 Running job 4 for 4 secs
+
+ Job 6 removed from cpu queue
+
+CPU 1 Running job 6 for 6 secs
+
+ Job 2 added to cpu queue
+
+ Job 15 removed from io queue
+
+IO 2 Running job 15 for 3 secs
+
+ Job 2 removed from cpu queue
+
+CPU 3 Running job 2 for 10 secs
+
+ Job 20 added to cpu queue
+
+ Job 3 removed from io queue
+
+IO 0 Running job 3 for 7 secs
+
+ Job 20 removed from cpu queue
+
+CPU 7 Running job 20 for 1 secs
+
+ Job 4 added to cpu queue
+
+ Job 13 removed from io queue
+
+IO 3 Running job 13 for 5 secs
+
+ Job 4 removed from cpu queue
+
+CPU 4 Running job 4 for 3 secs
+
+ Job 20 added to io queue
+
+ Job 15 added to cpu queue
+
+ Job 5 removed from io queue
+
+IO 2 Running job 5 for 8 secs
+
+ Job 15 removed from cpu queue
+
+CPU 7 Running job 15 for 4 secs
+
+ Job 14 added to io queue
+
+ Job 16 added to cpu queue
+
+ Job 10 removed from io queue
+
+IO 1 Running job 10 for 8 secs
+
+ Job 16 removed from cpu queue
+
+CPU 6 Running job 16 for 2 secs
+
+ Job 6 added to io queue
+
+ Job 4 added to io queue
+
+ Job 16 added to finished queue
+
+ Job 15 added to finished queue
+
+ Job 13 added to cpu queue
+
+ Job 19 removed from io queue
+
+IO 3 Running job 19 for 7 secs
+
+ Job 13 removed from cpu queue
+
+CPU 4 Running job 13 for 4 secs
+
+ Job 3 added to cpu queue
+
+ Job 11 removed from io queue
+
+IO 0 Running job 11 for 4 secs
+
+ Job 3 removed from cpu queue
+
+CPU 7 Running job 3 for 7 secs
+
+ Job 2 added to finished queue
+
+ Job 5 added to cpu queue
+
+ Job 17 removed from io queue
+
+IO 2 Running job 17 for 6 secs
+
+ Job 5 removed from cpu queue
+
+CPU 6 Running job 5 for 8 secs
+
+ Job 13 added to finished queue
+
+ Job 10 added to cpu queue
+
+ Job 20 removed from io queue
+
+IO 1 Running job 20 for 10 secs
+
+ Job 10 removed from cpu queue
+
+CPU 1 Running job 10 for 8 secs
+
+ Job 11 added to cpu queue
+
+ Job 14 removed from io queue
+
+IO 0 Running job 14 for 1 secs
+
+ Job 11 removed from cpu queue
+
+CPU 4 Running job 11 for 1 secs
+
+ Job 14 added to cpu queue
+
+ Job 6 removed from io queue
+
+IO 0 Running job 6 for 8 secs
+
+ Job 11 added to io queue
+
+ Job 14 removed from cpu queue
+
+CPU 4 Running job 14 for 9 secs
+
+ Job 19 added to cpu queue
+
+ Job 4 removed from io queue
+
+IO 3 Running job 4 for 2 secs
+
+ Job 19 removed from cpu queue
+
+CPU 3 Running job 19 for 1 secs
+
+ Job 19 added to finished queue
+
+ Job 3 added to finished queue
+
+ Job 4 added to cpu queue
+
+ Job 11 removed from io queue
+
+IO 3 Running job 11 for 10 secs
+
+ Job 4 removed from cpu queue
+
+CPU 3 Running job 4 for 3 secs
+
+ Job 17 added to cpu queue
+
+ Job 17 removed from cpu queue
+
+CPU 2 Running job 17 for 2 secs
+
+ Job 5 added to io queue
+
+ Job 17 added to finished queue
+
+ Job 5 removed from io queue
+
+IO 2 Running job 5 for 2 secs
+
+ Job 4 added to finished queue
+
+ Job 10 added to finished queue
+
+CPU 1 stoping
+
+CPU 3 stoping
+
+CPU 5 stoping
+
+CPU 7 stoping
+
+CPU 0 stoping
+
+CPU 2 stoping
+
+CPU 6 stoping
+
+ Job 5 added to cpu queue
+
+IO 2 stoping
+
+ Job 6 added to cpu queue
+
+IO 0 stoping
+
+ Job 20 added to cpu queue
+
+IO 1 stoping
+
+ Job 14 added to io queue
+
+CPU 4 stoping
+
+ Job 11 added to cpu queue
+
+IO 3 stoping
